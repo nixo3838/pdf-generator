@@ -1,0 +1,221 @@
+<div class="container-fluid p-4">
+    <div class="row">
+        <div class="receipt-container col-8" #contentToConvert>
+            <div class="mb-3">
+                <img src="assets/sbi-unipay.png" style="width: 100px;" alt="SBI Unipay">
+                <h4 class="text-center mb-0">Payment Receipt</h4>
+                <img src="assets/b-pay.jpg" class="payment-logo" alt="Mahavitaran Logo">
+            </div>
+            <br />
+
+            <hr />
+            <!-- Bill Details -->
+            <div class="section">
+                <div class="section-title">
+                    Bill Details
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <p class="fw-bold ">
+                            {{updatePdfForm.value.billerName}}
+                        </p>
+                    </div>
+                    <div class="col-2">
+                        <p class="mb-0">
+                            <span class="label">
+                                Consumer No
+                            </span>
+                        </p>
+                        <p>
+                            {{updatePdfForm.value.consumerNo}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transaction ID Details -->
+            <div class="section">
+                <div class="section-title">
+                    Transaction ID Details
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <p class="mb-0">
+                            <span class="label">
+                                Transaction Reference ID
+                            </span>
+                        </p>
+                        <p>
+                            {{ 'SB41' + updatePdfForm.value.txnRefId}}
+                        </p>
+                    </div>
+                    <div class="col-3">
+                        <p class="mb-0">
+                            <span class="label">
+                                Reference ID
+                            </span>
+                        </p>
+                        <p>
+                            {{ 'SB41' + updatePdfForm.value.refId}}
+                        </p>
+                    </div>
+                    <div class="col-3">
+                        <p class="mb-0">
+                            <span class="label">
+                                Approval Reference ID
+                            </span>
+                        </p>
+                        <p>
+                            {{ 'SB41' + updatePdfForm.value.refId}}
+                        </p>
+                    </div>
+                    <div class="col-3">
+                        <p class="mb-0">
+                            <span class="label">
+                                Status
+                            </span>
+                        </p>
+                        <p>
+                            Transaction Successful
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Details -->
+            <div class="section">
+                <div class="section-title">
+                    Customer Details
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <p class="mb-0">
+                            <span class="label">
+                                Customer Name
+                            </span>
+                        </p>
+                        <p>
+                            {{updatePdfForm.value.customerName}}
+                        </p>
+                    </div>
+                    <div class="col-3">
+                        <p class="mb-0">
+                            <span class="label">
+                                Bill No
+                            </span>
+                        </p>
+                        <p>
+                            {{ '000002' + updatePdfForm.value.billNo}}
+                        </p>
+                    </div>
+                    <div class="col-2">
+                        <p class="mb-0">
+                            <span class="label">
+                                Mobile No
+                            </span>
+                        </p>
+                        <p>
+                            {{'XXXXXXX' + updatePdfForm.value.mobileNo}}
+
+                        </p>
+                    </div>
+                    <div class="col-3">
+                        <p class="mb-0">
+                            <span class="label">
+                                Email ID
+                            </span>
+                        </p>
+                        <p>
+                            {{updatePdfForm.value.email + '@gmail.com'}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Details -->
+            <div class="section">
+                <div class="section-title">
+                    Payment Details
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <p class="mb-0">
+                            <span class="label">
+                                Date of Payment
+                            </span>
+                        </p>
+                        <p>
+                            {{updatePdfForm.value.dateOfPayment}}
+                        </p>
+                    </div>
+                    <div class="col-3">
+                        <p class="mb-0">
+                            <span class="label">
+                                Mode of Payment
+                            </span>
+                        </p>
+                        <p>
+                            Credit Card
+                        </p>
+                    </div>
+                    <div class="col-2">
+                        <p class="mb-0">
+                            <span class="label">
+                                Amount
+                            </span>
+                        </p>
+                        <p>
+                            Rs. {{updatePdfForm.value.amount}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total -->
+            <div class="total-paid p-1 d-flex align-items-center">
+                <p class="mb-0">
+                    Total Amount Paid
+                </p>
+                <p class="ms-auto me-5 my-auto fs-3">
+                    Rs. {{updatePdfForm.value.amount}}
+                </p>
+            </div>
+        </div>
+
+        <div class="col-4 pt-5 mx-auto">
+            <button class="btn btn-outline-info rounded w-25 mx-auto mb-2 py-2"
+                [ngClass]="{ 'btn-outline-danger' : updatePdfForm.invalid}" (click)="downloadPDF()"
+                [disabled]="[updatePdfForm.invalid]">
+                Download PDF
+            </button>
+            <form class="" style="margin: auto;" [formGroup]="updatePdfForm">
+                <label for="billerName">
+                    Biller Name
+                </label>
+                <input type="text" placeholder="Enter Biller Name" name="billerName" formControlName="billerName">
+
+                <label for="consumerNo">
+                    Consumer Number
+                </label>
+                <input type="text" placeholder="Enter Consumer Number" name="consumerNo" formControlName="consumerNo">
+
+                <label for="customerName">
+                    Customer Name
+                </label>
+                <input type="text" placeholder="Enter Customer Name" name="customerName" formControlName="customerName">
+
+                <label for="dateOfPayment">
+                    Date Of Payment
+                </label>
+                <input type="text" placeholder="Enter Date of Payment e.g. 01-Dec-2024 10:09:13" name="dateOfPayment"
+                    formControlName="dateOfPayment">
+
+                <label for="amount">
+                    Amount
+                </label>
+                <input type="text" placeholder="Enter Amount" name="amount" formControlName="amount">
+
+            </form>
+        </div>
+    </div>
+</div>

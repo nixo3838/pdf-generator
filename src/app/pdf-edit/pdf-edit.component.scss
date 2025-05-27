@@ -1,0 +1,106 @@
+.receipt-container {
+    // max-width: 1050px;
+    min-width: 1050px;
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
+.section {
+    border: 1.5px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 0 10px 20px;
+}
+
+.section-title {
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+p {
+    font-weight: bold;
+}
+
+.label {
+    font-weight: bold;
+    color: #31185fef;
+}
+
+.total-paid {
+    background-color: #e6f2ff;
+}
+
+.payment-logo {
+    float: right;
+    width: 40px;
+}
+
+@media (max-width: 576px) {
+    .payment-logo {
+        width: 80px;
+    }
+}
+
+form {
+    border: 1px solid rgba(245, 245, 245, 0.7);
+    padding: 2%;
+    border-radius: 15px;
+}
+
+input[type=text],
+input[type=file],
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+label {
+    font-weight: bold;
+}
+
+/* Container to hold the loading div */
+.container {
+    width: 300px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* The loading div with spinner animation */
+.loading-scroll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: scrollLoading 2s infinite linear;
+}
+
+/* Spinner style */
+.spinner {
+    border: 3px solid #f3f3f3;
+    /* Light gray */
+    border-top: 3px solid #3498db;
+    /* Blue */
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+
+/* Spinner animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
